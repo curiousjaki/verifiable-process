@@ -37,7 +37,12 @@ To install this project, follow these steps:
       up -d --pull always 
    ```
 
-3. Download and start the Camunda Modeler
+3. Check if the docker environment is running as expected
+   ```bash
+   docker ps --format "table {{.Image}}\t{{.Name}}\t{{.Status}}"
+   ```
+
+4. Download and start the Camunda Modeler
    ```bash
    #MacOS arm64
    CAMUNDA_URL=https://downloads.camunda.cloud/release/camunda-modeler/5.39.0/camunda-modeler-5.39.0-mac-arm64.zip
@@ -51,8 +56,14 @@ To install this project, follow these steps:
    ```
 
 
-3. Deploy the Business Process:
+5. Deploy the Business Process:
    - Navigate to the `examples` directory and run the business process from the Camunda Modeler on the local Docker installation
+
+   1. Start the BPMN process instance by pressing the little arrow button in the bottom.
+   2. Configure the modeler to connect to the local Camunda Platform on localhost:26500, leave authentication at one.
+   3. Confirm the process instance start instruction
+
+   ![modler-instuctions.png](modeler-instructions.png)
 
 ## Usage
 
