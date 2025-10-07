@@ -14,6 +14,9 @@ It consists of:
 - a Zeebe workflow management ambassador written in Java,
 - Camunda deployment files for running Camunda locally.
 
+## Demo Video
+
+[![demonstration-video.png](demonstration-video.png)](https://www.youtube.com/watch?v=9cvhsJ5QlWA)
 
 
 ## Installation
