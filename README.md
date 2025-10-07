@@ -18,17 +18,12 @@ It consists of:
 
 ## Installation
 
-### On bare metal and Docker Compose:
-
-*Prerequisites:* Before you begin, ensure you have the following installed:
-- Docker and Docker Compose
-- cargo-risczero @ 2.3.1, cpp @ 2024.1.5, r0vm @ 2.3.1, rust @ 1.88.0
-
+### Using the demo on Docker Compose: 
 To install this project, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/verifiable-processes-demo.git
+   git clone git@github.com:curiousjaki/verifiable-processes-demo.git
    cd verifiable-processes-demo
    ```
 
@@ -66,7 +61,16 @@ To install this project, follow these steps:
 3. Observe the process execution through Camunda Operate
 
 
-## Contributing
+## Development
+
+
+### Running on bare metal:
+
+*Prerequisites:* Before you begin, ensure you have the following installed:
+- Docker and Docker Compose
+- cargo-risczero @ 2.3.1, cpp @ 2024.1.5, r0vm @ 2.3.1, rust @ 1.88.0
+
+Then follow the Readme intructions of the individual repositories
 
 Contributions are welcome! To contribute:
 1. Fork the repository.
