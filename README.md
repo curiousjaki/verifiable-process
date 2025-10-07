@@ -39,7 +39,7 @@ To install this project, follow these steps:
 
 3. Check if the docker environment is running as expected
    ```bash
-   docker ps --format "table {{.Image}}\t{{.Name}}\t{{.Status}}"
+   docker ps --format "table {{.Image}}\t{{.Names}}\t{{.Status}}"
    ```
 
 4. Download and start the Camunda Modeler
