@@ -4,3 +4,4 @@ risc0
 env
 .DS_Store
 zeebe-adapter/receipt.txt
+camunda-modeler*

@@ -1,16 +1,10 @@
 # Verifiable Computation in Business Processes
 
-## Abstract
-
-Ensuring the integrity of business processes without disclosing confidential business information is a major challenge in inter-organizational processes. 
-This paper introduces a zero-knowledge proof (ZKP)-based approach for the verifiable execution of business processes while preserving confidentiality. 
-We integrate ZK virtual machines (zkVMs) into business process management engines through a comprehensive system architecture and a prototypical implementation. 
-Our approach supports chained verifiable computations through proof compositions. 
-On the example of product carbon footprinting, we model sequential footprinting activities and demonstrate how organizations can prove and verify the integrity of verifiable processes without exposing sensitive information. 
-We assess different ZKP proving variants within process models for their efficiency in proving and verifying, and discuss the practical integration of ZKPs throughout the Business Process Management (BPM) lifecycle. 
-Our experiment-driven evaluation demonstrates the automation of process verification under given confidentiality constraints.
-
-This is the accompanying repository for the 
+Ensuring integrity in inter-organizational business processes without exposing confidential data is a key challenge. 
+We propose a zero-knowledge proof (ZKP)-based approach that enables verifiable yet confidentiality-preserving process execution. 
+By integrating zero-knowledge virtual machines (zkVMs) into workflow management engines, our system allows organizations to prove the correctness of process outcomes without revealing internal computations. 
+Using product carbon footprinting as a case study, we demonstrate how verifiable processes maintain trust and regulatory compliance while safeguarding sensitive business information. 
+Evaluation results show that zkVM integration enables scalable, automated verification, albeit with notable proving overheads.
 
 ## Description
 
@@ -40,33 +34,37 @@ To install this project, follow these steps:
 
 2. Run the Camunda Platform within Docker:
    ```bash
-   docker compose -p zkvm4bpm down
-   docker compose -f docker-compose/docker-compose.yaml -p zkvm4bpm --env-file ./docker-compose/.env up -d --pull always 
-   docker compose -p zkvm4bpm exec -it service-task-worker sh -c "java -jar stw.jar"
+   docker compose -p zkvm4bpm down # If environment exist from previous demo
+   docker compose \
+      -p zkvm4bpm \
+      -f docker-compose/docker-compose.yaml \
+      --env-file ./docker-compose/.env \
+      up -d --pull always 
    ```
 
-3. Deploy the Camunda platform:
-   - Navigate to the `camunda` directory and follow the deployment instructions provided in the `README.md` file there.
-
-4. Build the Risc0 verifiable computing service:
+3. Download and start the Camunda Modeler
    ```bash
-   cd risc0-service
-   cargo build --release
+   #MacOS arm64
+   CAMUNDA_URL=https://downloads.camunda.cloud/release/camunda-modeler/5.39.0/camunda-modeler-5.39.0-mac-arm64.zip
+   #Linux x86
+   CAMUNDA_URL=https://downloads.camunda.cloud/release/camunda-modeler/5.39.0/camunda-modeler-5.39.0-linux-x64.tar.gz
+
+   #Download the zip archive and extract it
+   wget -qO- $CAMUNDA_URL | tar -xzf -
+
+   camunda-modeler*/camunda-modeler &
    ```
 
-5. Start the Zeebe workflow management ambassador:
-   ```bash
-   cd zeebe-ambassador
-   ./gradlew bootRun
-   ```
+
+3. Deploy the Business Process:
+   - Navigate to the `examples` directory and run the business process from the Camunda Modeler on the local Docker installation
 
 ## Usage
 
-1. Access the Camunda platform at `http://localhost:8080`.
+1. Access the Camunda platform at `http://localhost:8081`. Username is `demo`, password is `demo`.
 2. Deploy your BPMN workflows using the Camunda Modeler.
-3. Interact with the Risc0 service and Zeebe ambassador as part of your workflow execution.
+3. Observe the process execution through Camunda Operate
 
-## Caveats
 
 ## Contributing
 
@@ -78,19 +76,3 @@ Contributions are welcome! To contribute:
 ## License
 
 This project is licensed under the MIT License. See the `LICENSE` file for details.
-
-## Citation
-
-```bibtex
-@inproceedings{kiesel_confidentiality-preserving_2025,
-	title = {{Confidentiality}-{Preserving} {Verifiable} {Business} {Processes} through {Zero}-{Knowledge} {Proofs}},
-	booktitle = {Enterprise {Design}, {Operations}, and {Computing}},
-	publisher = {Springer Nature Switzerland},
-	author = {Kiesel, Jannis and Heiss, Jonathan},
-    doi = {},
-    note = {Preprint Version},
-	year = {2025},
-}
-```
-
-
