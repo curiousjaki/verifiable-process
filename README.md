@@ -16,7 +16,7 @@ It consists of:
 
 ## Demo Video
 
-[![demonstration-video.png](demonstration-video.png)](https://www.youtube.com/watch?v=9cvhsJ5QlWA)
+[![demonstration-video.png](demonstration-video.png)](https://www.youtube.com/watch?v=4yg6ovZEQjc)
 
 
 ## Installation

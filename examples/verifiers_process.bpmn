@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_10wmiph" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.39.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.7.0">
+  <bpmn:process id="verifiers_process" name="Verfiers Process" isExecutable="true">
+    <bpmn:extensionElements>
+      <zeebe:properties>
+        <zeebe:property name="camundaModeler:exampleOutputJson" value="{&#10;  &#34;previous_proof&#34;: &#34;{\n \&#34;imageId\&#34;: [3323299548, 1351342334, 2268250596, 3679032292, 2462348688, 1546123117, 625374383, 2129336589],\n \&#34;receipt\&#34;: \&#34;SAAAAAAAAABhNTM5OWI0MmRkOTllNmY2NzcwYjdjMmM4ZjIwZTJkZDhhNWM4N2EwMWU4MDM3OTFjMTE4ZDJkM2QyMmFhYmIzLnJlY2VpcHQ=\&#34;\n}&#34;&#10;&#10;}" />
+      </zeebe:properties>
+    </bpmn:extensionElements>
+    <bpmn:serviceTask id="Activity_1c325mn" name="Chaining I">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="proving-job" />
+        <zeebe:ioMapping>
+          <zeebe:input source="=&#34;Mul&#34;" target="operation" />
+          <zeebe:input source="=2" target="a" />
+          <zeebe:input source="=10" target="b" />
+          <zeebe:input source="=true" target="composition" />
+        </zeebe:ioMapping>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_18m7ew7</bpmn:incoming>
+      <bpmn:outgoing>Flow_0mbwkjv</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="Event_0xcpuqx">
+      <bpmn:incoming>Flow_0mbwkjv</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0mbwkjv" sourceRef="Activity_1c325mn" targetRef="Event_0xcpuqx" />
+    <bpmn:sequenceFlow id="Flow_18m7ew7" sourceRef="Activity_060pq5d" targetRef="Activity_1c325mn" />
+    <bpmn:sequenceFlow id="Flow_1cix6st" sourceRef="StartEvent_1" targetRef="Activity_060pq5d" />
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_1cix6st</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:serviceTask id="Activity_060pq5d" name="Verify Input">
+      <bpmn:extensionElements>
+        <zeebe:properties>
+          <zeebe:property name="camundaModeler:exampleOutputJson" value="{&#10;  &#34;previous_proof&#34;: &#34;{\n \&#34;imageId\&#34;: [3323299548, 1351342334, 2268250596, 3679032292, 2462348688, 1546123117, 625374383, 2129336589],\n \&#34;receipt\&#34;: \&#34;SAAAAAAAAABhNTM5OWI0MmRkOTllNmY2NzcwYjdjMmM4ZjIwZTJkZDhhNWM4N2EwMWU4MDM3OTFjMTE4ZDJkM2QyMmFhYmIzLnJlY2VpcHQ=\&#34;\n}&#34;&#10;&#10;}" />
+        </zeebe:properties>
+        <zeebe:taskDefinition type="verify-job" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1cix6st</bpmn:incoming>
+      <bpmn:outgoing>Flow_18m7ew7</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="verifiers_process">
+      <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="182" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0sckmdl_di" bpmnElement="Activity_1c325mn">
+        <dc:Bounds x="430" y="80" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0vyfgj7_di" bpmnElement="Activity_060pq5d">
+        <dc:Bounds x="270" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0xcpuqx_di" bpmnElement="Event_0xcpuqx">
+        <dc:Bounds x="582" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1cix6st_di" bpmnElement="Flow_1cix6st">
+        <di:waypoint x="218" y="120" />
+        <di:waypoint x="270" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_18m7ew7_di" bpmnElement="Flow_18m7ew7">
+        <di:waypoint x="370" y="120" />
+        <di:waypoint x="430" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0mbwkjv_di" bpmnElement="Flow_0mbwkjv">
+        <di:waypoint x="530" y="120" />
+        <di:waypoint x="582" y="120" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
